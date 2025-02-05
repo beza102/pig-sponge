@@ -11,7 +11,7 @@ public class Sponge {
    * spongeCase("spongebob")  should return "sPoNgEbOb"
    * spongeCase("Who are YOU calling A Pinhead")  should return "wHo aRe yOu cAlLiNg a pInHeAd"
    * spongeCase("WHAT is UP my dude")  should return "wHaT iS uP mY dUdE"
-   * spongeCase("debí tirar más fotos") should return dEbÍ tIrAr mÁs fOtOs" (note the accents)
+   * spongeCase("debí tirar más fotos") should return "dEbÍ tIrAr mÁs fOtOs"
    * spongeCase("E")  should return "e"
    * spongeCase("e")  should return "e"
    * 
@@ -33,9 +33,44 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
-  }
+    // Split the sentence into words
+    String[] words = sentence.split(" ");
+    
+    // Store the final result
+    String result = "";
 
+    // Loop through each word
+    for (String word : words) {
+      // To build the new word
+      String newWord = ""; 
+      // Start with lowercase for each word
+      boolean isLower = true; 
+
+      // Loop through each character in the word
+      for (int i = 0; i < word.length(); i++) {
+        
+        // Get the character at index i
+        char c = word.charAt(i); 
+        // Check if it's lowercase or uppercase and alternate
+        if (isLower) {
+          // Add lowercase
+          newWord += Character.toLowerCase(c); 
+        } else {
+          // Add lowercase
+          newWord += Character.toUpperCase(c); // Add uppercase
+        }
+
+        // Alternate between lowercase and uppercase
+        isLower = !isLower;
+      }
+
+      // Add the newly formed word to the result
+      result += newWord + " ";
+    }
+
+    // Remove the trailing space and return the result
+    return result.trim();
+  }
 
   // Method to help with testing, you do not need to read this.
   public static void assertEqual(int testNumber, String actual, String expected) {

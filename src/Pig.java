@@ -26,7 +26,24 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+
+        //separet the word in sentence
+        String[]words=sentence.split(" ");
+        String newWord="";
+
+        //check if word start with vowle
+        for(String word:words){
+            if( word.charAt(0)=='a'|| word.charAt(0)=='e' ||word.charAt(0)=='i'|| word.charAt(0)=='o'||word.charAt(0)=='u' ){
+                    newWord +=word + " ";
+            }else{
+                //move the the first to the last and add "ay"
+                newWord +=word.substring(1)+word.charAt(0)+"ay" + " ";
+            }
+
+        }
+
+        
+        return newWord.trim();
     }
 
 
